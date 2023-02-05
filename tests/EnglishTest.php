@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace NumberToWords\Tests;
 
+use NumberToWords\Exceptions\LengthException;
 use NumberToWords\NumberToWords;
 use NumberToWords\Locale\English;
 use PHPUnit\Framework\TestCase;
@@ -23,13 +24,11 @@ class EnglishTest extends TestCase
         $this->assertNull($n->convert('NaN')); // Not a Number
     }
 
-    /**
-     * @expectedException \LengthException
-     */
-    public function testLargeNumberException()
+     public function testLargeNumberException()
     {
         $n = new NumberToWords(new English());
 
+        $this->expectException(LengthException::class);
         $n->nameOfLargeNumber(0);
     }
 

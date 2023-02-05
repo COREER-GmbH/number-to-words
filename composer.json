@@ -1,9 +1,9 @@
 {
-  "name": "patrickschur/number-to-words",
+  "name": "coreer/number-to-words",
   "type": "library",
   "description": "Convert numbers to words in English or German.",
   "keywords": ["convert", "numbers", "to", "words"],
-  "homepage": "https://github.com/patrickschur/number-to-words",
+  "homepage": "https://github.com/coreer/number-to-words",
   "license": "MIT",
   "minimum-stability": "stable",
   "prefer-stable": true,
@@ -11,13 +11,17 @@
     {
       "name": "Patrick Schur",
       "email": "patrick_schur@outlook.de"
+    },
+    {
+      "name": "Harald Ernst",
+      "email": "harald.ernst@coreer.de"
     }
   ],
   "require": {
-    "php": "~7.1"
+    "php": ">=7.1 | >=8"
   },
   "require-dev": {
-    "phpunit/phpunit": "^6"
+    "phpunit/phpunit": "^8 | ^9"
   },
   "autoload": {
     "psr-4": {

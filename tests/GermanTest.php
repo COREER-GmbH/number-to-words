@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace NumberToWords\Tests;
 
+use NumberToWords\Exceptions\LengthException;
 use NumberToWords\NumberToWords;
 use NumberToWords\Locale\German;
 use PHPUnit\Framework\TestCase;
@@ -23,13 +24,11 @@ class GermanTest extends TestCase
         $this->assertNull($n->convert('NaN')); // Not a Number
     }
 
-    /**
-     * @expectedException \LengthException
-     */
     public function testLargeNumberException()
     {
         $n = new NumberToWords(new German());
 
+        $this->expectException(LengthException::class);
         $n->nameOfLargeNumber(0);
     }
 

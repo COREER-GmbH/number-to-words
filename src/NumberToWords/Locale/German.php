@@ -4,6 +4,8 @@ declare(strict_types = 1);
 
 namespace NumberToWords\Locale;
 
+use NumberToWords\Exceptions\LengthException;
+
 /**
  * Class German
  *
@@ -231,14 +233,14 @@ class German implements LocaleInterface
 
     /**
      * @param int $exponent
-     * @throws \LengthException if exponent is less than 6
+     * @throws LengthException if exponent is less than 6
      * @return mixed
      */
     public function nameOfLargeNumber(int $exponent)
     {
         if ($exponent < 6)
         {
-            throw new \LengthException('Power must be greater than or equal to 6.');
+            throw new LengthException('Power must be greater than or equal to 6.');
         }
 
         return $this->helper($exponent)[0];
@@ -260,7 +262,7 @@ class German implements LocaleInterface
         }
         else if ($exp < 1000)
         {
-            $tens = $exp / 10 % 10;
+            $tens = intval($exp / 10) % 10;
             $units = $exp % 10;
 
             if ($units > 0)
@@ -299,7 +301,7 @@ class German implements LocaleInterface
 
             if ($exp >= 100)
             {
-                $hundreds = $exp / 100 % 10;
+                $hundreds = intval($exp / 100) % 10;
 
                 if ($tens == 0)
                 {
